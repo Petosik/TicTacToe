@@ -87,14 +87,16 @@ var game = (function () {
         },
 
         resetGame: function () {
-            for (var i = 1; i < Math.pow(details.board.length) + 1; i++) {
-                document.getElementById("cell" + i).innerHTML = "";
+            if (details.isGameStarted) {
+                for (var i = 1; i <= Math.pow(details.board.length, 2); i++) {
+                    document.getElementById("cell" + i).innerHTML = "";
+                }
+                details.board = null;
+                details.isGameStarted = false;
+                details.isGameActive = true;
+                document.getElementById("userTurn").innerHTML = details.currentPlayer;
+                winner_checker.resetChecker();
             }
-            details.board = null;
-            details.isGameStarted = false;
-            details.isGameActive = true;
-            document.getElementById("userTurn").innerHTML = details.currentPlayer;
-            winner_checker.resetChecker();
         },
 
         perform: function (id) {
