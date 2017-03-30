@@ -78,6 +78,13 @@ body
     border: solid 1px black;
 }
 
+.draws
+{
+    height: 150px;
+    border: solid 1px black;
+    background-color: yellowgreen;
+}
+
 #resultBoard
 {
     display:inline-block;
@@ -85,20 +92,21 @@ body
     background-color: lightgreen;
 }
 
-.clearBoth { clear:both; }
-
 .header
 {
-    display:inline-block;
-    background-color: lightgreen;
-    width: 100%;
-    height: 100px;
+    height:50px;
+    background:#F0F0F0;
+    border:1px solid #CCC;
+    width:960px;
+    margin:0px auto;
 }
 
 #resultBoard button{
     height:20px; 
     width:100px; 
-    margin: 10px ;
+    margin-top: -5px;
+    margin-bottom: 10px;   
     position:relative;
-    top:50%; 
 }
+
+.clearBoth { clear:both; }

@@ -2,25 +2,19 @@ var winner_checker = (function () {
     var details = {
         isGameWon: false,
         isGameActive: true,
-        winner: "N",
+        winner: null,
         checkLine: function (_array) {
             var condition;
             for (var i = 0; i < _array.length; i++) {
-                condition = (_array[0] == _array[i] && _array[i] != "N");
+                condition = (_array[0] == _array[i] && _array[i] != null);
                 if (!condition) {
                     return false;
                 }
             }
             return true;
-        }
-    };
-    return {
-        resetChecker: function () {
-            details.isGameWon = false;
-            details.winner = "N";
-            details.isGameActive = true;
         },
-        checkForWinner: function (array) {
+
+        checkBoard: function (array) {
             // poziomo
             for (var i = 0; i < array.length; i++) {
                 if (details.checkLine(array[i])) {
@@ -40,12 +34,31 @@ var winner_checker = (function () {
                 }
             }
             // na skos
-            if ((array[1][1] != "N") && ((array[0][0] == array[1][1] && array[1][1] == array[2][2])
-                || (array[2][0] == array[1][1] && array[1][1] == array[0][2]))) {
-                details.winner = array[1][1];
+            var tempArrayUpLeft = new Array();
+            var tempArrayUpRight = new Array();
+            for (var i = 0; i < array.length; i++) {
+                tempArrayUpLeft.push(array[i][i]);
+                tempArrayUpRight.push(array[array.length - 1 - i][i]);
+            }
+            if (details.checkLine(tempArrayUpLeft)) {
+                details.winner = array[0][0];
                 details.isGameWon = true;
             }
+            else if (details.checkLine(tempArrayUpRight)) {
+                details.winner = array[array.length - 1][0];
+                details.isGameWon = true;
+            }
+        },
+    };
+    return {
+        resetChecker: function () {
+            details.isGameWon = false;
+            details.winner = null;
+            details.isGameActive = true;
+        },
 
+        checkForWinner: function (board) {
+            details.checkBoard(board);
             if (details.isGameWon && details.isGameActive) {
                 alert("WYGRYWA " + details.winner);
                 details.isGameActive = false;
@@ -54,7 +67,6 @@ var winner_checker = (function () {
             else {
                 return null;
             }
-
         }
     }
 })();
