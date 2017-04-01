@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <script src="scripts/winner_checker.js"></script>
+    <script src="scripts/history.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/presenter.js"></script>
+</head>
+
+<body>
+    <div class="header">
+
+    </div>
+    <div class="container">
+        <b>Teraz tura:</b>
+        <div id="userTurn" onclick="presenter.changeTurn(game)">O</div>
+
+        <center>
+            <div id="resultBoard">
+                <div class="boardPart">
+                    <b>X </b>
+                    <div class="result" id="winsOfX">0</div>
+                </div>
+                <div class="boardPart">
+                    <b>O</b>
+                    <div class="result" id="winsOfO">0</div>
+                </div>
+                <div class="draws">
+                    <b>DRAWS</b>
+                    <div class="result" id="draws">0</div>
+                </div>
+
+                </br class="clearBoth">
+                <button onclick="presenter.reset(game)">reset</button>
+            </div>
+        </center>
+        </br class="clearBoth">
+
+        <div class="board">
+            <div class="field" id="cell1" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '1')"></div>
+            <div class="field" id="cell2" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '2')"></div>
+            <div class="field" id="cell3" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '3')"></div>
+            <div class="clearBoth"></div>
+            <div class="field" id="cell4" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '4')"></div>
+            <div class="field" id="cell5" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '5')"></div>
+            <div class="field" id="cell6" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '6')"></div>
+            <div class="clearBoth"></div>
+            <div class="field" id="cell7" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '7')"></div>
+            <div class="field" id="cell8" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '8')"></div>
+            <div class="field" id="cell9" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '9')"></div>
+            <div class="clearBoth"></div>
+        </div>
+    </div>
+</body>
+
+</html>
