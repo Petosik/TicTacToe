@@ -24,6 +24,23 @@ describe('Game Test: ', function () {
         expect(game.getBoard()).toBe(board);
     });
 
+    it("test should reset game", function () {
+        // given
+        checkerMock.checkForWinner.and.returnValue(null);
+        game.init(initBoard);
+        var initPlayer = game.getCurrentPlayer();
+        var initIsGameStarted = game.getIsGameStarted();
+        game.move(historyMock, checkerMock, 8);
+
+        // when
+        game.resetGame();
+
+        // then
+        expect(game.getBoard()).toBe(null);
+        expect(game.getIsGameStarted()).toBe(initIsGameStarted);
+        expect(game.getCurrentPlayer()).toBe(initPlayer);
+    });
+
     it("test should change player turn", function () {
         // given
         game.init(initBoard);
@@ -63,6 +80,7 @@ describe('Game Test: ', function () {
 
     it("test should insert O in left-upper corner", function () {
         // given
+        checkerMock.checkForWinner.and.returnValue(null);
         game.init(initBoard);
 
         // when
@@ -74,7 +92,7 @@ describe('Game Test: ', function () {
 
     it("test should insert X in the middle of board", function () {
         // given
-
+        checkerMock.checkForWinner.and.returnValue(null);
         game.init(initBoard);
         game.changePlayerTurn();
 
@@ -87,6 +105,7 @@ describe('Game Test: ', function () {
 
     it("test should insert O in the middle of lower row", function () {
         // given
+        checkerMock.checkForWinner.and.returnValue(null);
         game.init(initBoard);
 
         // when
@@ -98,10 +117,9 @@ describe('Game Test: ', function () {
 
     it("test should deactivate game for draw game", function () {
         // given
-
+        checkerMock.checkForWinner.and.returnValue(null);
         var board = [["X", "X", "O"], ["O", "O", "X"], ["X", null, "X"]];
         game.init(board);
-        checkerMock.checkForWinner.and.returnValue(null);
 
         // when
         game.move(historyMock, checkerMock, 8);
@@ -113,6 +131,7 @@ describe('Game Test: ', function () {
 
     it("test should set winner to O after winning move", function () {
         // given
+        checkerMock.checkForWinner.and.returnValue(null);
         var board = [["O", "X", "X"], ["O", null, "O"], ["X", "O", "X"]];
         game.init(board);
         checkerMock.checkForWinner.and.returnValue('O');
@@ -127,6 +146,7 @@ describe('Game Test: ', function () {
 
     it("test should set winner to X after winning move", function () {
         // given
+        checkerMock.checkForWinner.and.returnValue(null);
         var board = [["O", "O", "X"], [null, "X", "O"], [null, null, null]];
         game.init(board);
         game.changePlayerTurn();
@@ -142,6 +162,7 @@ describe('Game Test: ', function () {
 
     it("test should start game after first move", function () {
         // given
+        checkerMock.checkForWinner.and.returnValue(null);
         game.init(initBoard);
         var initStatus = game.getIsGameStarted();
 
