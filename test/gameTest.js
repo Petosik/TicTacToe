@@ -36,6 +36,31 @@ describe('Game Test: ', function () {
         expect(initPlayer).not.toBe(game.getCurrentPlayer());
     });
 
+    it("test should change starting player from O to X", function () {
+        // given
+        game.init(initBoard);
+        var initPlayer = game.getStartingPlayer();
+
+        // when
+        game.changeStartingPlayer();
+
+        // then
+        expect(initPlayer).not.toBe(game.getStartingPlayer());
+    });
+
+    it("test should change starting player from X to O", function () {
+        // given
+        game.init(initBoard);
+        game.changeStartingPlayer();
+        var initPlayer = game.getStartingPlayer();
+
+        // when
+        game.changeStartingPlayer();
+
+        // then
+        expect(initPlayer).not.toBe(game.getStartingPlayer());
+    });
+
     it("test should insert O in left-upper corner", function () {
         // given
         game.init(initBoard);
