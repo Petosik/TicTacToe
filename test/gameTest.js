@@ -1,8 +1,12 @@
 describe('Game Test: ', function () {
     var initBoard;
     var initPlayer = game.getCurrentPlayer();
+    var historyMock;
+    var checkerMock;
 
     beforeEach(function () {
+        historyMock = jasmine.createSpyObj('historyMock', ['xWon', 'oWon', 'wasDraw']);
+        checkerMock = jasmine.createSpyObj('checkerMock', ['checkForWinner']);
         initBoard = [[null, null, null], [null, null, null], [null, null, null]];
         game.resetGame();
         if (game.getCurrentPlayer() != initPlayer)
@@ -15,10 +19,9 @@ describe('Game Test: ', function () {
 
         // when
         game.init(board);
-        var gameBoard = game.getBoard();
 
         // then
-        expect(gameBoard).toBe(board);
+        expect(game.getBoard()).toBe(board);
     });
 
     it("test should change player turn", function () {
@@ -38,7 +41,7 @@ describe('Game Test: ', function () {
         game.init(initBoard);
 
         // when
-        game.move(historyModule, winner_checker, 1);
+        game.move(historyMock, checkerMock, 1);
 
         // then
         expect(game.getBoard()[0][0]).toBe("O");
@@ -46,11 +49,12 @@ describe('Game Test: ', function () {
 
     it("test should insert X in the middle of board", function () {
         // given
+
         game.init(initBoard);
         game.changePlayerTurn();
 
         // when
-        game.move(historyModule, winner_checker, 5);
+        game.move(historyMock, checkerMock, 5);
 
         // then
         expect(game.getBoard()[1][1]).toBe("X");
@@ -61,7 +65,7 @@ describe('Game Test: ', function () {
         game.init(initBoard);
 
         // when
-        game.move(historyModule, winner_checker, 8);
+        game.move(historyMock, checkerMock, 8);
 
         // then
         expect(game.getBoard()[2][1]).toBe("O");
@@ -69,11 +73,13 @@ describe('Game Test: ', function () {
 
     it("test should deactivate game for draw game", function () {
         // given
+
         var board = [["X", "X", "O"], ["O", "O", "X"], ["X", null, "X"]];
         game.init(board);
+        checkerMock.checkForWinner.and.returnValue(null);
 
         // when
-        game.move(historyModule, winner_checker, 8);
+        game.move(historyMock, checkerMock, 8);
 
         // then
         expect(game.getWinner()).toBe(null);
@@ -84,9 +90,10 @@ describe('Game Test: ', function () {
         // given
         var board = [["O", "X", "X"], ["O", null, "O"], ["X", "O", "X"]];
         game.init(board);
+        checkerMock.checkForWinner.and.returnValue('O');
 
         // when
-        game.move(historyModule, winner_checker, 5);
+        game.move(historyMock, checkerMock, 5);
 
         // then
         expect(game.getWinner()).toBe("O");
@@ -98,9 +105,10 @@ describe('Game Test: ', function () {
         var board = [["O", "O", "X"], [null, "X", "O"], [null, null, null]];
         game.init(board);
         game.changePlayerTurn();
+        checkerMock.checkForWinner.and.returnValue('X');
 
         // when
-        game.move(historyModule, winner_checker, 7);
+        game.move(historyMock, checkerMock, 7);
 
         // then
         expect(game.getWinner()).toBe("X");
@@ -113,20 +121,9 @@ describe('Game Test: ', function () {
         var initStatus = game.getIsGameStarted();
 
         // when
-        game.move(historyModule, winner_checker, 1);
+        game.move(historyMock, checkerMock, 1);
 
         // then
         expect(game.getIsGameStarted()).toBe(true);
     });
-
-
-
-
-
-
-
-
-
-
-
 });
