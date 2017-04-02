@@ -1,6 +1,6 @@
 <html>
-
 <head>
+	<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/segment7" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script src="scripts/winner_checker.js"></script>
     <script src="scripts/history.js"></script>
@@ -9,34 +9,32 @@
 </head>
 
 <body>
-    <div class="header">
-
-    </div>
     <div class="container">
-        <b>Teraz tura:</b>
-        <div id="userTurn" onclick="presenter.changeTurn(game)">O</div>
+      
+	  
+	  <div id="controlPanel">
+		  <div id="leftCP">NOW<br>
+		  <div id="userTurn" onclick="presenter.changeTurn(game)">O</div>
+			<button onclick="presenter.reset(game)">reset</button>
+		  </div>
+		  <div id="rightCP">
+		  			  <div class="symbolResult">
+				  <b>X</b>
+				  <div class="result" id="winsOfX">0</div>
+			  </div>
+			  <div class="symbolResult" id="drawsContainer">
+				  <b>DRAWS</b>
+				  <div class="result" id="draws">0</div>
+			  </div>
+			  <div class="symbolResult">
+				  <b>O</b>
+				  <div class="result" id="winsOfO">0</div>
+			  </div>
 
-        <center>
-            <div id="resultBoard">
-                <div class="boardPart">
-                    <b>X </b>
-                    <div class="result" id="winsOfX">0</div>
-                </div>
-                <div class="boardPart">
-                    <b>O</b>
-                    <div class="result" id="winsOfO">0</div>
-                </div>
-                <div class="draws">
-                    <b>DRAWS</b>
-                    <div class="result" id="draws">0</div>
-                </div>
-
-                </br class="clearBoth">
-                <button onclick="presenter.reset(game)">reset</button>
-            </div>
-        </center>
-        </br class="clearBoth">
-
+		  </div>
+	  </div>
+	  
+	  <br class="clearBoth">
         <div class="board">
             <div class="field" id="cell1" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '1')"></div>
             <div class="field" id="cell2" onclick="presenter.insertSymbol(game,winner_checker,historyModule, '2')"></div>

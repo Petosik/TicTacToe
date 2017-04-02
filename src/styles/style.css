@@ -1,112 +1,200 @@
 body
 {
-    background-color: lightblue;
+	background:url('https://westfieldcc.files.wordpress.com/2011/10/simple-blur-ipad-background.jpg') no-repeat center center fixed;
+   background-size: cover;
 }
 
 .board
 {
-    background-color: dodgerblue;
+    background-color: rgba(255, 255, 255, 0.3);
     margin: auto;
-    width: 316px;
-    height: 316px;
-    border: solid 1px lightsteelblue;
+    width: 340px;
+    height: 340px;
+    border: 15px solid rgba(216,216,216,0.4);
+	border-radius: 30px;
 }
 
 .field
 {
-    margin-top: 4px;
-    margin-left: 4px;
+    margin-top: 10px;
+    margin-left: 10px;
     height: 100px;
     width: 100px;
-    background-color: white;
+    background-color: rgba(255,255,255,0.7);
     float: left;
+	border-radius: 30px;
 }
 
 .field:hover
 {
-    background-color: #d8d8d8;
+    background-color: rgba(216,216,216,1);
 }
 
 .symbol
 {
-    font-family: Arial;
-    text-align: center;
-    top: 35%;
-    left: 50%;
-    font-size: 80px;
-    color: darkred;
-    background-color: #d8d8d8;
+	background-color: rgba(216,216,216,0.95);
+	display: table;
+	text-align: center;
     height: 100px;
     width: 100px;
+	border-radius: 30px;
 }
 
 .symbol:hover
 {
-    background-color: #e3e3e3;
+    background-color: rgba(222,222,222,1);
+}
+
+.symbol span
+{
+	display: table-cell;
+	vertical-align: middle;
+	margin: auto;
+	font-family: Arial;
+    font-size: 75px;
+	font-weight: bold;
+}
+
+.circle
+{
+	color: rgba(50,50,193,0.7);
+	text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;
+}
+
+.cross
+{
+	color: rgba(193,50,50,0.7);
+	text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
+}
+
+#controlPanel
+{
+	padding: 7px;
+	border: solid 8px rgba(16,43,78,0.4);
+	background-color: rgba(255,255,255,0.3);
+	border-radius: 15px;
+	display: table;
+	margin: auto;
+}
+
+#controlPanel  > *
+{
+	vertical-align:middle;
+}
+
+#leftCP
+{
+	color: white;
+	display: inline-block;
+	font-weight: bold;
+	font-size: 18px;
+	font-family: Arial;
+	text-align: center;
+	padding: 20px;
+	background-color: rgba(16,43,78,1);
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	
+}
+
+#leftCP button{
+  background: #e07777;
+  background-image: -webkit-linear-gradient(top, #e07777, #d60b0b);
+  background-image: -moz-linear-gradient(top, #e07777, #d60b0b);
+  background-image: -ms-linear-gradient(top, #e07777, #d60b0b);
+  background-image: -o-linear-gradient(top, #e07777, #d60b0b);
+  background-image: linear-gradient(to bottom, #e07777, #d60b0b);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-weight: bold;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+#leftCP button: hover{
+	  background: #c71437;
+  background-image: -webkit-linear-gradient(top, #c71437, #a80303);
+  background-image: -moz-linear-gradient(top, #c71437, #a80303);
+  background-image: -ms-linear-gradient(top, #c71437, #a80303);
+  background-image: -o-linear-gradient(top, #c71437, #a80303);
+  background-image: linear-gradient(to bottom, #c71437, #a80303);
+  text-decoration: none;
+}
+
+#rightCP
+{
+	border-left: solid 3px white;
+	padding-left: 30px;
+	display: inline-block;
+	background-color: rgba(16,43,78,1);
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 #userTurn
 {
+	color: rgb(226,25,33);
+	margin: auto;
+	margin-top: 2px;
+	margin-bottom: 10px;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 50px;  
     font-family: Arial;
-    text-align: center;
-    font-size: 45px;
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    border: solid 1px black;
+	font-weight: normal;
+	vertical-align: center;
+    font-size: 40px;
+    width: 40px;
+	height: 50px;
+    background-color: black;
+	border-radius: 4px;
+}
+#userTurn:hover
+{
+	background-color: rgba(0,0,0,0.7);
+}
+
+.symbolResult
+{
+	color: white;
+	margin-right: 30px;
+	display: inline-block;
+	text-align: center;
+	font-size: 30px;
+	float: left;
+	padding: 5px;
+}
+
+#drawsContainer
+{
+	font-size: 12px;
+	margin-top: 15%;
 }
 
 .result
 {
-    margin: auto;
-    margin-bottom: 10px;
+	vertical-align: middle;
     text-align: center;
-    font-size: 25px;
-    width: 40px;
-    height: 30px;
-    background-color: white;
-    border: solid 1px black;
-}
-.boardPart
-{
-    width: 70px;
-    font-family: Arial;
-    text-align: center;
-    font-size: 35px;
-    float: left;
-    background-color: yellowgreen;
-    border: solid 1px black;
+	color: rgb(250,166,26);
+	font-family: 'Segment7Standard'; 
+	font-weight: normal; 
+    font-size: 100px;
+    background-color: black;
+	padding: 2px;
+	height: 90px;
+	border-radius: 4px;
+	margin-bottom: 20px;
 }
 
-.draws
-{
-    height: 150px;
-    border: solid 1px black;
-    background-color: yellowgreen;
-}
-
-#resultBoard
-{
-    display:inline-block;
-    border: solid 1px black;
-    background-color: lightgreen;
-}
-
-.header
-{
-    height:50px;
-    background:#F0F0F0;
-    border:1px solid #CCC;
-    width:960px;
-    margin:0px auto;
-}
-
-#resultBoard button{
-    height:20px; 
-    width:100px; 
-    margin-top: -5px;
-    margin-bottom: 10px;   
-    position:relative;
+#draws{
+	margin: auto;
+	color: rgb(166,206,57);
+	height:30px;
+	font-size: 35px;
 }
 
 .clearBoth { clear:both; }

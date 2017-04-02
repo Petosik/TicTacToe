@@ -19,9 +19,12 @@ var presenter = (function () {
     return {
 
         reset: function (_gameModule) {
+			if (_gameModule.getIsGameStarted())
+			{
             for (var i = 1; i <= Math.pow(_gameModule.getBoard().length, 2); i++) {
                 document.getElementById("cell" + i).innerHTML = "";
             }
+			}
             _gameModule.resetGame();
         },
 
@@ -40,7 +43,19 @@ var presenter = (function () {
                 _gameModule.move(_historyModule, _winnerCheckerModule, id);
                 var posY = _gameModule.getPositionYById(id),
                     posX = _gameModule.getPositionXById(id),
-                    symbolCell = '<div class="symbol">' + _gameModule.getBoard()[posY][posX] + '</div>',
+					symbol = _gameModule.getBoard()[posY][posX],
+					symbolClass;
+					
+					if(symbol == "X")
+					{
+						symbolClass = "cross";
+					}
+					else if(symbol == "O")
+					{
+						symbolClass = "circle";
+					}
+					
+                    var symbolCell = '<div class="symbol ' + symbolClass +'"><span>' + symbol + '<span></div>',
                     cell = document.getElementById("cell" + id);
                 cell.innerHTML = symbolCell;
             }
