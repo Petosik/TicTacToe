@@ -82,7 +82,7 @@ body
 	vertical-align:middle;
 }
 
-#leftCP
+.leftCP
 {
 	color: white;
 	display: inline-block;
@@ -97,7 +97,8 @@ body
 	
 }
 
-#leftCP button{
+
+.leftCP button{
   background: #e07777;
   background-image: -webkit-linear-gradient(top, #e07777, #d60b0b);
   background-image: -moz-linear-gradient(top, #e07777, #d60b0b);
@@ -115,7 +116,7 @@ body
   text-decoration: none;
 }
 
-#leftCP button: hover{
+.leftCP button: hover{
 	  background: #c71437;
   background-image: -webkit-linear-gradient(top, #c71437, #a80303);
   background-image: -moz-linear-gradient(top, #c71437, #a80303);
@@ -123,6 +124,13 @@ body
   background-image: -o-linear-gradient(top, #c71437, #a80303);
   background-image: linear-gradient(to bottom, #c71437, #a80303);
   text-decoration: none;
+}
+
+#middleLeftCP
+{
+	border-left: solid 3px white;
+	border-radius: 0px;
+
 }
 
 #rightCP
@@ -135,7 +143,7 @@ body
 	border-bottom-right-radius: 5px;
 }
 
-#userTurn
+.userDisplay
 {
 	color: rgb(226,25,33);
 	margin: auto;

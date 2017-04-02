@@ -24,11 +24,13 @@ var presenter = (function () {
                 }
             }
             _gameModule.resetGame();
+            document.getElementById("userTurn").innerHTML = _gameModule.getCurrentPlayer();
+
         },
 
         changeTurn: function (_gameModule) {
-            _gameModule.changePlayerTurn();
-            document.getElementById("userTurn").innerHTML = _gameModule.getCurrentPlayer();
+            _gameModule.changeStartingPlayer();
+            document.getElementById("startUser").innerHTML = _gameModule.getStartingPlayer();
         },
 
         insertSymbol: function (_gameModule, _winnerCheckerModule, _historyModule, id) {

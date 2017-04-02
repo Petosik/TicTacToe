@@ -1,6 +1,7 @@
 var game = (function (_externalBoard) {
     var details = {
         currentPlayer: "O",
+        startingPlayer: "O",
         board: null,
         winner: null,
         isGameActive: true,
@@ -15,6 +16,13 @@ var game = (function (_externalBoard) {
                 details.currentPlayer = "X";
             else if (details.currentPlayer == "X")
                 details.currentPlayer = "O";
+        },
+
+        switchStartingPlayer: function () {
+            if (details.startingPlayer == "O")
+                details.startingPlayer = "X";
+            else if (details.startingPlayer == "X")
+                details.startingPlayer = "O";
         },
 
         checkIfFieldIsNotOccupied: function (id) {
@@ -68,6 +76,9 @@ var game = (function (_externalBoard) {
         getCurrentPlayer: function () {
             return details.currentPlayer;
         },
+        getStartingPlayer: function () {
+            return details.startingPlayer;
+        },
         getIsGameActive: function () {
             return details.isGameActive;
         },
@@ -103,12 +114,17 @@ var game = (function (_externalBoard) {
             }
         },
 
+        changeStartingPlayer: function () {
+            details.switchStartingPlayer();
+        },
+
         resetGame: function () {
             if (details.isGameStarted) {
                 details.board = null;
                 details.isGameStarted = false;
                 details.isGameActive = true;
                 details.winner = null;
+                details.currentPlayer = details.startingPlayer;
             }
         }
     }
